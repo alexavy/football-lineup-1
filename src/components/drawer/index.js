@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 import {
-    Input, 
     Button,
     Drawer,
     DrawerBody,
@@ -12,9 +11,13 @@ import {
     DrawerCloseButton
 } from '@chakra-ui/react'
 
-import ResultsList from './results-list';
+import PlayerResultsList from './player-results-list';
+
+import { PlayerContext } from '../player/context';
 
 const CustomDrawer = ({isOpen, onClose}) => {
+    const { existSelectedPlayer } = useContext(PlayerContext);
+
     return (
         <Drawer
             isOpen={isOpen}
@@ -26,13 +29,13 @@ const CustomDrawer = ({isOpen, onClose}) => {
                 <DrawerCloseButton />
                 <DrawerHeader>Adicionar Jogador</DrawerHeader>
                 <DrawerBody>
-                    <ResultsList />
+                    <PlayerResultsList />
                 </DrawerBody>
                 <DrawerFooter justifyContent='space-between'>
                     <Button size='sm' variant='outline' mr={3} onClick={onClose}>
                         Cancelar
                     </Button>
-                    <Button size='sm'>Confirmar</Button>
+                    <Button disabled={!existSelectedPlayer} size='sm' onClick={onClose}>Confirmar</Button>
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>

@@ -1,14 +1,16 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 
-import { Input } from '@chakra-ui/react';
+import { Input, Spinner } from '@chakra-ui/react';
 
-import dataJSON from '../../../../data';
+import RowPlayer from './row-player';
+
+import dataJSON from '../../../data';
 
 import { debounce } from 'lodash';
 
 import './styles.css';
 
-const ResultsList = () => {
+const PlayerResultsList = () => {
     const listRef = useRef();
 
     const dataJSONPlayers = dataJSON.PlayerData;
@@ -16,6 +18,7 @@ const ResultsList = () => {
     const [page, setPage] = useState(0);
     const [search, setSearch] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [totalResults, setTotalResults] = useState(0);
 
     const [results, setResults] = useState([]);
 
@@ -30,18 +33,20 @@ const ResultsList = () => {
                 return currentName.includes(targetName);
             });
             
+            setTotalResults(dataAux.length);
+
             dataAux = dataAux.slice(pageParam * 20, (pageParam * 20) + 20);
 
             setIsLoading(false);
             setResults([...currentResults, ...dataAux]);
-        }, 1000);
+        }, 500);
     }
 
     const getResultsDebounce = useCallback(debounce(getResults, 500), []);
 
     useEffect(() => getResultsDebounce(results, search, page), [page]);
 
-    useEffect(() => getResultsDebounce([], search, page), [search]);
+    useEffect(() => getResultsDebounce([], search, 0), [search]);
 
     const onScroll = () => {
         if (listRef.current) {
@@ -53,24 +58,30 @@ const ResultsList = () => {
 
     return (
         <>
-            <h6 className='results-found-text'>{`Resultados Encontrados: (${results.length})`}</h6>
-
+            <h6 className='results-found-text'>{`Resultados Encontrados: (${totalResults})`}</h6>
+            
             <Input placeholder='Buscar por nome...' value={search} onChange={(event) => setSearch(event.target.value)} />
 
-            <div className='results-list' ref={listRef} onScroll={onScroll}>
-                {results.length ?
-                    results.map((result) => (
-                        <div className='row-player' key={`result-${result.ID}`}>
-                            <img src={result.ImageURL} className='image-player'/>
-                            <h6 className='name-player'>{`${result.Forename} ${result.Surname}`}</h6>
-                        </div>
-                    ))
-                : <span>Sem resultados</span>}
-            </div>
+            {totalResults > 0
+            ?
+                <div className='results-list' ref={listRef} onScroll={onScroll}>
+                    {results.map((currentPlayer) => (
+                        <RowPlayer currentPlayer={currentPlayer} />
+                    ))}
+                </div>
+            : !isLoading 
+            ? <div className='results-not-found-text'>Sem resultados.</div> 
+            : []}
 
-            {isLoading ? <span className='loading'>Carregando...</span> : []}
+            {isLoading 
+            ? 
+                <div className='loading-container'>
+                    <Spinner size='sm' me='15px' />
+                    <span>Carregando...</span> 
+                </div>
+            : []}
         </>
     )
 }
 
-export default ResultsList;
+export default PlayerResultsList;
