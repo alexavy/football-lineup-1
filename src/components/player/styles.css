@@ -3,6 +3,7 @@
     height: 48px;
     display: flex;
     cursor: pointer;
+    overflow: hidden;
     font-weight: 700;
     align-items: center;
     border-radius: 200px;
