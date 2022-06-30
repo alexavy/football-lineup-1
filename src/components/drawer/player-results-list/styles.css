@@ -1,0 +1,21 @@
+.results-found-text {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.results-not-found-text {
+    padding: 15px 0;
+}
+
+.results-list {
+    width: '100%';
+    height: 'auto';
+    margin-top: 15px;
+    overflow: scroll;
+    max-height: 450px;
+}
+
+.loading-container {
+    padding: 15px 0;
+}
