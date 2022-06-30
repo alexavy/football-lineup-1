@@ -1,0 +1,16 @@
+.player {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    cursor: pointer;
+    font-weight: 700;
+    align-items: center;
+    border-radius: 200px;
+    justify-content: center;
+    background-color: #fff;
+    border-bottom: 3px solid #75CE8B;
+}
+
+.player:hover {
+    opacity: 0.8;
+}
