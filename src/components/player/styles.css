@@ -1,3 +1,28 @@
+.close-btn {
+    top: 0;
+    width: 16px;
+    right: -5px;
+    height: 16px;
+    display: flex;
+    cursor: pointer;
+    padding: 1px 5px;
+    position: absolute;
+    align-items: center;
+    border-radius: 200px;
+    justify-content: center;
+    background-color: #e74c3c;
+}
+
+.close-btn svg {
+    width: 8px;
+    height: 8px;
+    font-weight: 700;
+}
+
+.close-btn:hover {
+    opacity: 0.5;
+}
+
 .player {
     width: 48px;
     height: 48px;
@@ -14,4 +39,16 @@
 
 .player:hover {
     opacity: 0.8;
+}
+
+.player-name-container {
+    padding: 1px 5px;
+    border-radius: 200px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.player-name-container p {
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
 }
