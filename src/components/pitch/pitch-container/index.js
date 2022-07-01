@@ -1,5 +1,6 @@
 import './styles.css';
 
+import PitchSvg from '../svg';
 import Player from '../../player';
 
 const PitchContainer = ({children}) => {
@@ -16,6 +17,7 @@ const PitchContainer = ({children}) => {
     return (
         <div className='pitch-container'>
             {children(getPlayers)}
+            <PitchSvg />
         </div>
     )
 }

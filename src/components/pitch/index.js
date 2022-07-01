@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 
 import { GridItem } from '@chakra-ui/react';
 
-import PitchSvg from './svg';
-
 import Attack from './attack';
 import MidField from './midfield';
 import Defense from './defense';
@@ -35,8 +33,6 @@ const Pitch = () => {
               <Defense players={getPlayers(currentFormation[0])} />
 
               <GoalKeeper players={getPlayers(1)} />
-
-              <PitchSvg />
             </>
           )}
         </PitchContainer>
