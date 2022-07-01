@@ -3,7 +3,7 @@ import React from 'react';
 import { useDisclosure } from '@chakra-ui/react';
 
 import CustomDrawer from '../drawer';
-import PlayerContainer from './player-container';
+import PlayerButton from './player-button';
 
 import { PlayerProvider } from './context';
 
@@ -14,7 +14,7 @@ const Player = () => {
 
     return (
         <PlayerProvider>
-            <PlayerContainer onOpen={onOpen} />
+            <PlayerButton onOpen={onOpen} />
             <CustomDrawer isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
         </PlayerProvider>
     )
