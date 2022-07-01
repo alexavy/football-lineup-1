@@ -7,29 +7,18 @@ import './styles.css';
 import { PlayerContext } from '../../../player/context';
 
 const RowPlayer = ({currentPlayer}) => {
-    const { selectedPlayer, setSelectedPlayer } = useContext(PlayerContext);
-
-    const getPlayerName = () => {
-        let firstName = currentPlayer.Forename.toLowerCase();
-        firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
-
-        let secondName = currentPlayer.Surname.toLowerCase();
-        secondName = secondName.charAt(0).toUpperCase() + secondName.slice(1);
-
-        return `${firstName} ${secondName}`;
-    }
+    const { selectedPlayer, setSelectedPlayer, getCapitalizeName } = useContext(PlayerContext);
 
     const handleOnClick = () => {
         if (Object.keys(selectedPlayer) && selectedPlayer.ID === currentPlayer.ID) setSelectedPlayer({});
         else setSelectedPlayer(currentPlayer);
     }
 
-
     return (
         <div className='row-player' key={`player-result-${currentPlayer.ID}`} onClick={handleOnClick}>
             <div style={{display: 'flex'}}>
                 <img src={currentPlayer.ImageURL} className='image-player'/>
-                <h6 className='name-player'>{getPlayerName()}</h6>
+                <h6 className='name-player'>{getCapitalizeName(currentPlayer)}</h6>
             </div>
 
             {currentPlayer.ID === selectedPlayer.ID ? <CheckCircleIcon color='green' /> : []}
