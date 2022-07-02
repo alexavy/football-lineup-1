@@ -10,12 +10,10 @@ import { PlayerProvider } from './context';
 import './styles.css';
 
 const Player = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-
     return (
         <PlayerProvider>
-            <PlayerButton onOpen={onOpen} />
-            <CustomDrawer isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+            <PlayerButton />
+            <CustomDrawer />
         </PlayerProvider>
     )
 }

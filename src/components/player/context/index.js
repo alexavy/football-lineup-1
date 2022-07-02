@@ -3,6 +3,8 @@ import { createContext, useState } from 'react';
 export const PlayerContext = createContext();
 
 export const PlayerProvider = ({children}) => {
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
     const [selectedPlayer, setSelectedPlayer] = useState({});
     const existSelectedPlayer = Object.keys(selectedPlayer).length;
 
@@ -26,7 +28,9 @@ export const PlayerProvider = ({children}) => {
                 selectedPlayer, 
                 setSelectedPlayer,
                 existSelectedPlayer,
-                getCapitalizeName
+                getCapitalizeName,
+                isDrawerOpen, 
+                setIsDrawerOpen
             }}
         >
             {children}

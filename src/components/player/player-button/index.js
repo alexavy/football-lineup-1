@@ -5,12 +5,12 @@ import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 
 import { PlayerContext } from '../context';
 
-const PlayerButton = ({onOpen}) => {
-    const { selectedPlayer, setSelectedPlayer, existSelectedPlayer, getCapitalizeName } = useContext(PlayerContext);
+const PlayerButton = () => {
+    const { selectedPlayer, setSelectedPlayer, existSelectedPlayer, getCapitalizeName, setIsDrawerOpen } = useContext(PlayerContext);
 
     return (
         <VStack position='relative'>
-            <div className='player' role='button' onClick={onOpen}>
+            <div className='player' role='button' onClick={() => setIsDrawerOpen(true)}>
                 {existSelectedPlayer
                     ? <img src={selectedPlayer.ImageURL} />
                     : <AddIcon w={3} h={3} color='#5FB875' fontWeight={'300'} />
