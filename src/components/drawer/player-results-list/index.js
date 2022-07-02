@@ -56,10 +56,6 @@ const PlayerResultsList = () => {
         }
     }
 
-    if (totalResults === 0 && !isLoading) {
-        return <div className='results-not-found-text'>Sem resultados.</div>;
-    }
-
     return (
         <>  
             <div>
@@ -74,6 +70,8 @@ const PlayerResultsList = () => {
                         <RowPlayer currentPlayer={currentPlayer} />
                     ))}
                 </div>
+            : !isLoading
+            ? <div className='results-not-found-text'>Sem resultados.</div>
             : []}
 
             {isLoading 
