@@ -61,10 +61,11 @@ const PlayerResultsList = () => {
     }
 
     return (
-        <>
-            <h6 className='results-found-text'>{`Resultados Encontrados: (${totalResults})`}</h6>
-            
-            <Input placeholder='Buscar por nome...' value={search} onChange={(event) => setSearch(event.target.value)} />
+        <>  
+            <div>
+                <h6 className='results-found-text'>{`Resultados Encontrados: (${totalResults})`}</h6>
+                <Input placeholder='Buscar por nome...' value={search} onChange={(event) => setSearch(event.target.value)} />
+            </div>
 
             {totalResults > 0
             ?

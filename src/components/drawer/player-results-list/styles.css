@@ -10,10 +10,9 @@
 
 .results-list {
     width: '100%';
-    height: 'auto';
     margin-top: 15px;
-    overflow: scroll;
-    max-height: 450px;
+    overflow-y: scroll;
+    height: calc(100vh - 250px);
 }
 
 .loading-container {
