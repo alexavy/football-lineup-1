@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useDisclosure } from '@chakra-ui/react';
-
 import CustomDrawer from '../drawer';
 import PlayerButton from './player-button';
 
