@@ -12,7 +12,6 @@ $ git clone https://github.com/brucemike33/football-lineup.git
 $ cd football-lineup
 
 $ npm install
-
 ``` 
 ## Tecnologias
 - React + Chakra UI
