@@ -3,6 +3,8 @@
 ## Sobre
 Football Lineup é uma aplicação que possibilita a criação de escalações de futebol, oferecendo uma vasta gama de formações táticas, jogadores reais e customizações. Monte o seu time e compartilhe com os amigos!
 
+[Experimente agora.](https://football-lineup.herokuapp.com/) 
+
 ## Instalação
 ``` 
 $ git clone https://github.com/brucemike33/football-lineup.git
